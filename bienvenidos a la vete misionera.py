@@ -138,6 +138,7 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
             mostrar_reportes(pacientes, pacientes_eliminados)
 
         elif opcion == "6": #salir del sistema
+            mostrar_reportes(pacientes, pacientes_eliminados)
             print("Gracias por visitar la vete, nos vemos pronto!")
             break
 
