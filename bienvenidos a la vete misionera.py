@@ -10,7 +10,7 @@
 
 def agregar_paciente( pacientes, paciente): #defino pacientes a aagregar
     pacientes.append(paciente)
-    print("Nuevo amiguito registrado en la vete")
+    print("¡Nuevo amiguito registrado en la vete!")
 
 def mostrar_pacientes(pacientes): #defino los pacientes en la lista
     if not pacientes:
