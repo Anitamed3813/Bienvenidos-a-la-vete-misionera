@@ -1,31 +1,41 @@
-def agregar_paciente(veterinaria, pacientes, paciente): #funcion para agregar nuevos pacientes
-    pacientes.append(paciente)
-    print("Ya tenemos un nuevo amiguito en la vete!")
+#(Deberá crear una aplicación de consola que simulara un “sistema de gestión de
+#pacientes de una veterinaria”, que permita:
+#- Registrar un paciente detallando su nombre, sexo, edad aproximada,
+#especie(canino/felino), rasgos, enfermedad, nombre dueño,
+#numero de contacto.
+#- Consultas de registros.
+#- Modificar el registro de un paciente.
+#- Eliminar el registro de un paciente.
+#- Al finalizar, el programa deberá mostrar reportes de la cantidad de pacientes registrados y eliminados.)
 
-def mostrar_pacientes(pacientes): #Muestra los pacientes de la lista
+def agregar_paciente( pacientes, paciente): #defino pacientes a aagregar
+    pacientes.append(paciente)
+    print("Nuevo amiguito registrado en la vete")
+
+def mostrar_pacientes(pacientes): #defino los pacientes en la lista
     if not pacientes:
-        print("No hay pacientes registrados")
+        print("No hay pacientes registrados.")
         return
 
     for paciente in pacientes:
         print(f"ID: {paciente['id']}, Nombre: {paciente['nombre']}, Especie: {paciente['especie']}, Nativo: {paciente['nativo']}")
 
-def consultar_paciente(pacientes, id_paciente): #busca y recopila la informacion de un paciente por su ID
+def consultar_paciente(pacientes, id_paciente): #define la consulta de pacientes
     for paciente in pacientes:
         if paciente['id'] == id_paciente:
             return paciente
     return None
 
-def modificar_paciente(pacientes, id_paciente, nuevo_paciente): #modifica los datos de un paciente
+def modificar_paciente(pacientes, id_paciente, nuevo_paciente): #define el paciente a modificar
     for i, paciente in enumerate(pacientes):
         if paciente['id'] == id_paciente:
             pacientes[i] = nuevo_paciente
-            print("Modificaste los datos exitosamente")
+            print("Registro modificado con éxito.")
             return True
     print("Paciente no encontrado.")
     return False
 
-def eliminar_paciente(veterinaria, pacientes, pacientes_eliminados, id_paciente): #elimina todos los datos de un ID de una lista
+def eliminar_paciente( pacientes, pacientes_eliminados, id_paciente): #define el paciente a eliminar, si existe
     for paciente in pacientes:
         if paciente['id'] == id_paciente:
             pacientes.remove(paciente)
@@ -35,18 +45,18 @@ def eliminar_paciente(veterinaria, pacientes, pacientes_eliminados, id_paciente)
     print("Paciente no encontrado.")
     return False
 
-def mostrar_reportes(pacientes, pacientes_eliminados): #Muestra un resumen de cuantos pacientes se registro y cuantos se eliminaron
+def mostrar_reportes(pacientes, pacientes_eliminados): #define la muestra de reporte
     print(f"\nReporte de la Veterinaria:")
     print(f"Número de pacientes registrados: {len(pacientes)}")
     print(f"Número de pacientes eliminados: {len(pacientes_eliminados)}")
 
-def main(): #Esta funcion controla y coordina las siguientes funciones de carga de datos de los pacientes
+def main(): # inicia la funcion de gestion de todas las demas funciones
     veterinaria = None
     pacientes = []
     pacientes_eliminados = []
 
     while True:
-        print("\nBienvenidos a la vete misionera")
+        print("\nBienvenidos a la vete de la selva misionera")
         print("1. Registrar Paciente")
         print("2. Consultar Pacientes")
         print("3. Modificar Paciente")
@@ -82,7 +92,7 @@ def main(): #Esta funcion controla y coordina las siguientes funciones de carga 
                 'contacto_dueno': contacto_dueno
             }
 
-            agregar_paciente(veterinaria, pacientes, nuevo_paciente)
+            agregar_paciente( pacientes, nuevo_paciente)
 
         elif opcion == "2":
             mostrar_pacientes(pacientes)
@@ -122,13 +132,13 @@ def main(): #Esta funcion controla y coordina las siguientes funciones de carga 
 
         elif opcion == "4":
             id_eliminar = int(input("Ingrese el ID del paciente a eliminar: "))
-            eliminar_paciente(veterinaria, pacientes, pacientes_eliminados, id_eliminar)
+            eliminar_paciente( pacientes, pacientes_eliminados, id_eliminar)
 
         elif opcion == "5":
             mostrar_reportes(pacientes, pacientes_eliminados)
 
         elif opcion == "6":
-            print("Saliendo del programa. ¡Hasta luego!")
+            print("Saliendo del sistema, hasta pronto!")
             break
 
         else:
