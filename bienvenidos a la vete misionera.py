@@ -73,7 +73,7 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
             especie = input("Especie del paciente (perro/gato/yaguareté/tucán/coati/mono): ")
             nativo = input("¿Es nativo de la provincia de Misiones? (si/no): ")
             raza = ""
-            if especie in ['perro', 'gato']: #si el paciente es perro o gato, debera especificar la raza del mismo
+            if especie in ['perro', 'gato' , 'mono' , 'tucán' ]: #si el paciente es perro o gato, debera especificar la raza del mismo
                 raza = input("Raza del paciente: ")
             enfermedad = input("Enfermedad del paciente: ")
             nombre_dueno = input("Nombre del dueño: ")
