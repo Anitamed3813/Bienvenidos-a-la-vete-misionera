@@ -55,7 +55,7 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
     pacientes = []
     pacientes_eliminados = []
 
-    while True:
+    while True: #funcion de inicio de ingreso de datos
         print("\nBienvenidos a la vete de la selva misionera")
         print("1. Registrar Paciente")
         print("2. Consultar Pacientes")
@@ -66,20 +66,20 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
 
         opcion = input("Seleccione una opción: ")
 
-        if opcion == "1":
+        if opcion == "1":  #si se elige introducir un nuevo paciente, se debe rellenar los siguientes datos
             nombre = input("Nombre del paciente: ")
             sexo = input("Sexo del paciente: ")
             edad = input("Edad aproximada del paciente: ")
             especie = input("Especie del paciente (perro/gato/yaguareté/tucán/coati/mono): ")
             nativo = input("¿Es nativo de la provincia de Misiones? (si/no): ")
             raza = ""
-            if especie in ['perro', 'gato']:
+            if especie in ['perro', 'gato']: #si el paciente es perro o gato, debera especificar la raza del mismo
                 raza = input("Raza del paciente: ")
             enfermedad = input("Enfermedad del paciente: ")
             nombre_dueno = input("Nombre del dueño: ")
             contacto_dueno = input("Número de contacto del dueño: ")
 
-            nuevo_paciente = {
+            nuevo_paciente = { #se guarda nuevo paciente
                 'id': len(pacientes) + 1,
                 'nombre': nombre,
                 'sexo': sexo,
@@ -94,13 +94,13 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
 
             agregar_paciente( pacientes, nuevo_paciente)
 
-        elif opcion == "2":
+        elif opcion == "2": # si se elige la opcion 2, se mostrara el registro 
             mostrar_pacientes(pacientes)
 
-        elif opcion == "3":
+        elif opcion == "3": # si se elige la opcion 3, se accede a modificar el registro, en caso de existir
             id_modificar = int(input("Ingrese el ID del paciente a modificar: "))
             paciente_existente = consultar_paciente(pacientes, id_modificar)
-            if paciente_existente:
+            if paciente_existente: #si el ID es correcto, permite modificar los datos
                 nuevo_nombre = input("Nuevo nombre del paciente: ")
                 nuevo_sexo = input("Nuevo sexo del paciente: ")
                 nuevo_edad = input("Nueva edad aproximada del paciente: ")
@@ -113,7 +113,7 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
                 nuevo_nombre_dueno = input("Nuevo nombre del dueño: ")
                 nuevo_contacto_dueno = input("Nuevo número de contacto del dueño: ")
 
-                nuevo_paciente = {
+                nuevo_paciente = { #guarda los datos modificados del paciente
                     'id': id_modificar,
                     'nombre': nuevo_nombre,
                     'sexo': nuevo_sexo,
@@ -128,22 +128,22 @@ def main(): # inicia la funcion de gestion de todas las demas funciones
 
                 modificar_paciente(pacientes, id_modificar, nuevo_paciente)
             else:
-                print("Paciente no encontrado.")
+                print("Paciente no encontrado.") #si se equivoca de ID o no existe, se imprime que no se encuentra
 
-        elif opcion == "4":
+        elif opcion == "4": # la opcion 4 permite eliminar el regidtro del ID solicitado
             id_eliminar = int(input("Ingrese el ID del paciente a eliminar: "))
             eliminar_paciente( pacientes, pacientes_eliminados, id_eliminar)
 
-        elif opcion == "5":
+        elif opcion == "5": #la opcion 5 muestra el reporte de los registros nuevos y los eliminados
             mostrar_reportes(pacientes, pacientes_eliminados)
 
-        elif opcion == "6":
-            print("Saliendo del sistema, hasta pronto!")
+        elif opcion == "6": #salir del sistema
+            print("Gracias por visitar la vete, nos vemos pronto!")
             break
 
-        else:
+        else: #si se introduce una opcion incorrecta, se imprime por pantalla
             print("Opción no válida. Por favor, ingrese una opción válida.")
 
 
 if __name__ == "__main__":
-    main()
+    main() #fin del programa de control
